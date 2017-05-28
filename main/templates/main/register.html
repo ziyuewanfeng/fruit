@@ -1,0 +1,222 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+<link href="../../static/main/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+<script src="../../static/main/js/jquery-1.11.0.min.js"></script>
+<!--Custom Theme files-->
+<!--theme-style-->
+<link href="../../static/main/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>	
+<!--start-menu-->
+<script src="../../static/main/js/simpleCart.min.js"> </script>
+<link href="../../static/main/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="../../static/main/js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
+<!--dropdown-->
+<script src="../../static/main/js/jquery.easydropdown.js"></script>
+</head>
+<style>
+    .sell_user{
+        display: none;
+    }
+</style>
+<script>
+    function chose(){
+{#        alert("call_chose");#}
+        var chose=document.getElementsByClassName("chose_user")[0];
+        var index=chose.selectedIndex;
+        var value=chose.options[index].value;
+{#        alert(value);#}
+        if(value=="sell"){
+            var identity=document.getElementById('identity');
+            identity.required="required";
+            var  sell_user=document.getElementsByClassName("sell_user");
+            for (var i=0;i<sell_user.length;i++){
+                sell_user[i].style.display="block";
+            }
+        }
+    }
+    function chose_1(){
+        {#        alert("call_chose");#}
+        var chose=document.getElementsByClassName("chose_user")[0];
+        var index=chose.selectedIndex;
+        var value=chose.options[index].value;
+        {#        alert(value);#}
+        if(value=="buy"){
+            var identity=document.getElementById('identity');
+            identity.removeAttribute("required");
+            var  sell_user=document.getElementsByClassName("sell_user");
+            for (var i=0;i<sell_user.length;i++){
+                sell_user[i].style.display="none";
+            }
+        }
+    }
+
+</script>
+<body> 
+	<!--top-header-->
+	<div class="top-header">
+		<div class="container">
+			<div class="top-header-main">
+				<div class="col-md-6 top-header-left">
+					<div class="drop">
+						<div class="box">
+							<select tabindex="4" class="dropdown drop">
+								<option value="" class="label">游客账号</option>
+								<option value="1" onClick="">登录</option>
+								<option value="2" onClick="">注册</option>
+							</select>
+						</div>
+						
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="col-md-6 top-header-left">
+					<div class="cart box_1">
+						<a href="checkout.html">
+							<div class="total">
+								<span class="simpleCart_total"></span></div>
+								<img src="../../static/main/images/cart-1.png" alt="" />
+						</a>
+						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--top-header-->
+	<!--start-logo-->
+	<div class="logo">
+		<a href="index.html"><h1>水 果 商 店</h1></a>
+	</div>
+	<!--start-logo-->
+	<!--bottom-header-->
+	<div class="header-bottom">
+		<div class="container">
+			<div class="header">
+				<div class="col-md-9 header-left">
+				<div class="top-nav">
+					<ul class="memenu skyblue"><li class="active"><a href="index.html">首页</a></li>
+						<li class="grid"><a href="#">水果种类</a>
+							<div class="mepanel">
+								<div class="row">
+									<div class="col1 me-one">
+										<ul>
+										<li><a href="products.html">浆果类</a></li>
+										<li><a href="products.html">柑橘类</a></li>
+										<li><a href="products.html">葡萄类</a></li>
+										<li><a href="products.html">核果类</a></li>
+										<li><a href="products.html">仁果类</a></li>
+										<li><a href="products.html">瓜果类</a></li>
+									</ul>
+									</div>
+									
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="col-md-3 header-right"> 
+				<div class="search-bar">
+					<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+					<input type="submit" value="">
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--bottom-header-->
+	<!--start-breadcrumbs-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a href="index.html">首页</a></li>
+					<li class="active">注册</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<!--end-breadcrumbs-->
+	<!--register-starts-->
+	<div class="register">
+		<div class="container">
+			<div class="register-top heading">
+				<h2>注 册</h2>
+			</div>
+			<div class="register-main">
+                <form action="/main/register" method="post">
+                {% csrf_token %}
+                    <div class="col-md-6 account-left">
+                            <input placeholder="姓名" name="name" type="text" tabindex="1" required>
+                            <input placeholder="用户名" name="username" type="text" tabindex="2" required>
+                            <input placeholder="地址" type="text" name="address" tabindex="3" required>
+                            <input placeholder="身份证号" type="text" name="identity" tabindex="4" id="identity" class="sell_user">
+
+    {#                    <p> {{ com_pass }}</p>#}
+                            <ul>
+                                <li><label class="radio left"><input type="radio" value="男" name="radio" checked=""><i></i>男</label></li>
+                                <li><label class="radio"><input type="radio" name="radio" value="女"><i></i>女</label></li>
+                                <div class="clearfix"></div>
+                            </ul>
+                        <select class="chose_user"  style="font-size: 24px;margin-bottom: 20px" name="chose_buy_or_sell">
+                            <option value="null">&nbsp;</option>
+                            <option value="buy" onclick="chose_1()">我是买家</option>
+                            <option  value="sell" onclick="chose()" >我是卖家</option>
+                        </select>
+                        <p class="sell_user" style="font-size: 20px;margin-bottom: 20px;margin-top: -1px;">选择快递:</p>
+                        <select class="sell_user" style="font-size: 24px;margin-bottom: 20px" name="chose_com_pass">
+                            {% if com_pass %}
+                                {% for i in com_pass %}
+                                    <option value="{{ i.id }}">{{ i }}</option>
+                                {% endfor %}
+                            {% endif %}
+
+                        </select>
+
+                    </div>
+                    <div class="col-md-6 account-left">
+
+                        <input placeholder="密码" type="password" tabindex="4" name="password" required>
+                        <input placeholder="确认密码" type="password" tabindex="4" name="again_password" required>
+                        <p style="color: red">{{ res }}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="address submit">
+							<input type="submit" value="提交">
+                    </div>
+                </form>
+		</div>
+	</div>
+	
+	<!--information-end-->
+	<!--footer-starts-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-top">
+				<div class="col-md-6 footer-left">
+					<form>
+						<input type="text" value="Enter Your Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email';}">
+						<input type="submit" value="Subscribe">
+					</form>
+				</div>
+				<div class="col-md-6 footer-right">					
+					
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--footer-end-->	
+</body>
+</html>
